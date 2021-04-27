@@ -97,20 +97,21 @@ function Chat() {
       </div>
       {/* chat body */}
       <div className="chat__body">
-        {messages.map((message) => (
-          <p
-            key={message?.timestamp.seconds}
-            className={`chat__message ${
-              message?.name === user?.displayName && "chat__reciever"
-            }`}
-          >
-            <span className="chat__name">{message?.name}</span>
-            {message?.message}
-            <span className="chat__timestamp">
-              {new Date(message?.timestamp?.toDate()).toLocaleTimeString()}
-            </span>
-          </p>
-        ))}
+        {messages.length > 0 &&
+          messages.map((message) => (
+            <p
+              key={message?.timestamp}
+              className={`chat__message ${
+                message?.name === user?.displayName && "chat__reciever"
+              }`}
+            >
+              <span className="chat__name">{message?.name}</span>
+              {message?.message}
+              <span className="chat__timestamp">
+                {new Date(message?.timestamp?.toDate()).toLocaleTimeString()}
+              </span>
+            </p>
+          ))}
       </div>
       <div className="chat__footer">
         <InsertEmoticon />
